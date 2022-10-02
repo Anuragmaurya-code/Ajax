@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+    <h2>The XMLHttpRequest Object</h2>
+
+    <p id="demo"></p>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+
+            const xmlDoc = this.responseXML;
+            const x = xmlDoc.getElementsByTagName("Name");
+
+            let txt = ""
+
+            for (let i = 0; i < x.length; i++) {
+                txt = txt + x[i].childNodes[0].nodeValue + "<br>";//inserts name then a break
+            }
+            document.getElementById("demo").innerHTML = txt;//used to write to html document
+        }
+        xhr.open("GET", "Student_Data.xml");
+
+        xhr.send();
+    </script>
+
+</body>
+
+</html>
